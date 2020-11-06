@@ -1,0 +1,161 @@
+﻿
+
+
+
+@model StarBusEnterprise.Models.DomainWork.Feedback
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = null;
+}
+
+
+<div class="container" style="background-color:lightgray;padding:10px; margin-top:20px;">
+    <div class="col col-lg-12">
+        <h1 style="text-align:center;padding:10px;">FeedBack </h1>
+        <hr />
+    </div>
+    <div class="col-md-12" >
+        <form id="MAnageClient" class="col-md-12">
+            @Html.AntiForgeryToken()
+
+
+            <input type="hidden" name="Id" class="form-control" value="@Model.Id" />
+
+            <div class="form-group row">
+                <label class="control-label col-lg-6 text-center" for="Name"> Name</label>
+                <input class="form-control col-lg-6" type="text" data-val="true" data-val-length="less data" data-val-length-min="4"
+                       data-val-required="The Name field is required." id="Name" name="Name" value="@Model.Name">
+                <span class="text-danger field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-lg-6 text-center" for="Email"> Email</label>
+                <input class="form-control col-lg-6" type="email" data-val="true" data-val-length="less data" data-val-length-min="4"
+                       data-val-required="The Email field is required." id="Email" name="Email" value="@Model.Email">
+                <span class="text-danger field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-lg-6 text-center" for="Phone"> Phone</label>
+                <input class="form-control col-lg-6" type="text" data-val="true" data-val-length="less data" data-val-length-min="4"
+                       data-val-required="The Phone field is required." id="Phone" name="Phone" value="@Model.Phone">
+                <span class="text-danger field-validation-valid" data-valmsg-for="Phone" data-valmsg-replace="true"></span>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-lg-6 text-center">
+                        <label class="col-form-label text-center" for="Subject">Subject:</label>
+                    </div>
+                    <div class="col-lg-6">
+                        <select class="form-control" id="Subject" name="Subject" data-val="true" data-val-required="Please Select.">
+                            <option selected disabled>--select--</option>
+                            @foreach (var item in Model.feedBackSubjectsList)
+                            {
+                                <option value="@item.SubjectName">@item.SubjectName</option>
+                            }
+                        </select>
+                        <span class="field-validation-valid text-danger" data-valmsg-for="Subject" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-lg-6 text-center" for="Comment"> Comment</label>
+               <textarea class="col-lg-6" name="Comment" id="Comment" value="Comment" style="width:500px;height:100px">@Model.Comment</textarea>
+            </div>
+
+
+           
+
+            <div class="form-group text-center">
+
+
+                <a class="btn btn-success btn-group text-center" onclick="Submit()">Submit</a>
+
+            </div>
+        </form>
+    </div>
+</div>
+<div id="domMessage" style="display:none;">
+    <h1>We are processing your request.  Please be patient.</h1>
+</div>
+
+@*@section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }*@
+
+<script>
+    function Submit() {
+
+        var formData1 = $("#MAnageClient").serialize(); const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+        swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            text: "You won't Save this!",
+            icon: 'success',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, Save it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+                event.preventDefault();
+                var $daer = $('#MAnageClient');
+                if ($daer.valid()) {
+
+
+                    $.ajax
+                        (
+                            {
+                                url: "/StarBus/FeedbackForm/",
+                                method: "POST",
+                                data: formData1,
+
+                                success: function (data) {
+
+
+                                    swalWithBootstrapButtons.fire(
+                                        'SUccess',
+                                        'Yor file is Saved :)'
+
+                                    )
+                                        .then(function () {
+                                            $("#myModal").modal("hide");
+                                            window.location.reload();
+                                        });
+
+                                }
+
+                            }
+                        );
+                }
+            }
+            else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                $("#myModal").modal("hide");
+                swalWithBootstrapButtons.fire(
+                    'Cancelled',
+
+                    'error'
+                )
+            }
+        })
+
+    }
+
+
+
+
+
+
+
+  
+</script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>

@@ -1,0 +1,8 @@
+﻿<option disabled selected>--select--</option>
+@if (ViewBag.DeptDate != null)
+{
+    foreach (var item in ViewBag.DeptDate)
+    {
+        <option value="@item">@item</option>
+    }
+}

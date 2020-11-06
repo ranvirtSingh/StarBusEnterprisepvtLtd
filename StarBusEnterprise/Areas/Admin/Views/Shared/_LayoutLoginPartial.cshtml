@@ -1,0 +1,242 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+
+        <li class="nav-item">
+            <p style="padding:7px;">Hello @User.Identity.Name!</p>
+        </li>
+        <li class="nav-item">
+
+
+            <a class="btn btn-success" onclick="Logout()">Logout</a>
+
+            @*<form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                </form>*@
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="btn btn-success " onclick="createCategory()"> Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-success " onclick="login()"> Login</a>
+        </li>
+    }
+</ul>
+<head>
+    <style type="text/css" media="screen">
+        td, th {
+            color: black;
+        }
+
+        #spinner {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            background-color: white;
+        }
+    </style>
+
+</head>
+@*<script src="~/js/js/BlockUi.js"></script>*@
+
+<div id="spinner" style="display:none;padding: 326px 656px 322px 673px; position:absolute;left:0px;top:0px;background-color:rgba(0, 0, 0, 0.69); ">
+    <img id="img-spinner" src="/images/Loader/Ajaxloader.gif" alt="loading" />
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            @*<div class="modal-header">
+               
+
+            </div>*@
+            <div class="modal-body" >
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div id="myDiv">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+@*@if (SignInManager.IsSignedIn(User))
+    {
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    @Html.ActionLink("Hello " + User.Identity.Name + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                </li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+            </ul>
+        }
+    }
+    else
+    {
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("Register", "Create", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+            <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        </ul>
+    }*@
+
+<script>
+
+    function createCategory() {
+        ////$.blockUI();
+        //$.blockUI({ message: $('#domMessage') });
+
+
+        $('#spinner').show();
+
+        var delay = 2000;
+        $.ajax(
+            {
+                url: "/Account/Create/",
+                method: "GET",
+
+
+                success: function (result) {
+
+                    setTimeout(function () {
+                        $("#myDiv").html(result);
+
+                        $("#myModal").modal("show");
+                        $('#spinner').hide();
+                    }, delay);
+                    //$("#myDiv").html(result);
+
+                    //$("#myModal").modal("show");
+                    //$('#spinner').hide();
+
+                }
+
+
+
+
+            });
+
+
+        //setTimeout($.unblockUI, 2000);
+
+
+    }
+
+    function login() {
+        ////$.blockUI();
+        //$.blockUI({ message: $('#domMessage') });
+
+
+        $('#spinner').show();
+
+        var delay = 2000;
+        $.ajax(
+            {
+                url: "/Account/Login/",
+                method: "GET",
+
+
+                success: function (result) {
+
+                    setTimeout(function () {
+                        $("#myDiv").html(result);
+
+                        $("#myModal").modal("show");
+                        $('#spinner').hide();
+                    }, delay);
+                    //$("#myDiv").html(result);
+
+                    //$("#myModal").modal("show");
+                    //$('#spinner').hide();
+
+                }
+
+
+
+
+            });
+
+
+        //setTimeout($.unblockUI, 2000);
+
+
+    }
+    function Logout() {
+
+        /*  var formData1 = $("#MAnageClient").serialize();*/
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+        swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            text: "You won't Logout !",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Are, You sure!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+                //event.preventDefault();
+                //var $daer = $('#MAnageClient');
+                //if ($daer.valid()) {
+
+
+                $.ajax
+                    (
+                        {
+                            url: "/Account/Logout/",
+                            method: "POST",
+                            //data: formData1,
+
+                            success: function (data) {
+
+
+                                swalWithBootstrapButtons.fire(
+                                    'Logout SUccess',
+
+                                )
+                                    .then(function () {
+                                        $("#myModal").modal("hide");
+                                        window.location.href="/Home/Index";
+                                    });
+
+                            }
+
+                        }
+                    );
+
+            }
+            else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                $("#myModal").modal("hide");
+                swalWithBootstrapButtons.fire(
+                    'Cancelled',
+
+                    'error'
+                )
+            }
+        })
+
+    }
+</script>

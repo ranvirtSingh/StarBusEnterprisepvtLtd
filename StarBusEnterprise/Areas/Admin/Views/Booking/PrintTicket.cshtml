@@ -1,0 +1,410 @@
+﻿@model StarBusEnterprise.FormViewModel.MAinViewModel
+@{
+    ViewData["Title"] = "PrintTicket";
+}
+
+@if (Model.Passengerinfo != null)
+{
+    <div class="my-2 text-center">
+        <h1 class="py-3" style="color: darkorange">Print Ticket Now!</h1>
+        <div id="PrintArea" class="text-left">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <table cellspacing="0" cellpadding="2" style="border:2px solid gray;padding:5px">
+                                <tbody align="left">
+                                    <tr>
+                                        <td align="center" colspan="3" style="border-bottom: 2px solid gray; padding-bottom:5px ">
+                                            <img id="ctl00_content1_img1" src="/Images/logo.gif" style="height:111px;width:217px;border-width:0px;">
+                                        </td>
+                                        <td align="left" colspan="3" style="color: Blue; border-bottom: 2px solid gray; padding-bottom: 5px">
+                                            H.O :-Star Bus,Rani Bazar,Bikaner
+                                            <br>
+                                            Ph  :- 9887301585
+                                            <br>
+                                            B.O :-Star Bus, J.N.V.,Bikaner
+                                            <br>
+                                            Ph  :-9214961605
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Ticket Number
+                                        </td>
+                                        <td class="arial18">
+                                            :
+                                        </td>
+                                        <td class="redText">
+                                            <span>
+                                                <strong>
+                                                    @Model.Passengerinfo.Pnr
+                                                </strong>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            Agent Name
+                                        </td>
+                                        <td class="arial18">
+                                            :
+                                        </td>
+                                        <td>
+                                            <span>
+                                                <strong>
+                                                    @Model.Passengerinfo.AgentId
+                                                </strong>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Name
+                                        </td>
+                                        <td class="arial18">
+                                            :
+                                        </td>
+                                        <td>
+                                            <span>
+                                                <strong>
+                                                    @Model.Passengerinfo.CName
+                                                </strong>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            Phone Number
+                                        </td>
+                                        <td class="arial18">
+                                            :
+                                        </td>
+                                        <td>
+                                            <span>
+                                                <strong>
+                                                    @Model.Passengerinfo.CPhone
+                                                </strong>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Source
+                                        </td>
+                                        <td class="arial18">
+                                            :
+                                        </td>
+                                        <td>
+                                            <span><strong>@Model.Passengerinfo.CFrom </strong></span>
+                                        </td>
+                                        <td>
+                                            Destination
+                                        </td>
+                                        <td class="arial18">
+                                            :
+                                        </td>
+                                        <td>
+                                            <span>
+                                                <strong>
+                                                    @Model.Passengerinfo.CTo
+                                                </strong>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Joutney Date
+                                        </td>
+                                        <td class="arial18">
+                                            :
+                                        </td>
+                                        <td>
+                                            <span>
+                                                <strong>
+                                                    @Model.Passengerinfo.CDate.ToShortDateString()
+                                                </strong>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            Journey Time
+                                        </td>
+                                        <td class="arial18">
+                                            :
+                                        </td>
+                                        <td>
+                                            <span>
+                                                <strong>
+                                                    @Model.Passengerinfo.CTime
+                                                </strong>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Seat Numbers
+                                        </td>
+                                        <td class="arial18">
+                                            :
+                                        </td>
+                                        <td>
+                                            <span>
+                                                <strong>
+                                                    @Model.Passengerinfo.Seatnumber
+                                                </strong>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            No.of Passengers
+                                        </td>
+                                        <td class="arial18">
+                                            :
+                                        </td>
+                                        <td>
+                                            <span>
+                                                <strong>
+                                                    @Model.Passengerinfo.Totalseat
+                                                </strong>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Boarding Point
+                                        </td>
+                                        <td class="arial18">
+                                            :
+                                        </td>
+                                        <td>
+                                            <span><strong>@Model.Passengerinfo.CFrom </strong></span>
+                                        </td>
+                                        <td>
+                                            Bus Number
+                                        </td>
+                                        <td class="arial18">
+                                            :
+                                        </td>
+                                        <td>
+                                            <span>
+                                                <strong>
+                                                    @Model.Passengerinfo.BusNumber
+                                                </strong>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Booking Date
+                                        </td>
+                                        <td class="arial18">
+                                            :
+                                        </td>
+                                        <td>
+                                            <span>
+                                                <strong>
+                                                    @DateTime.Now.Date
+                                                </strong>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            Total Rent
+                                        </td>
+                                        <td class="arial18">
+                                            :
+                                        </td>
+                                        <td class="redText">
+                                            <span>
+                                                <strong>
+                                                    @Model.Passengerinfo.Amount
+                                                </strong>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td>
+                            <table cellspacing="0" cellpadding="2" border="0" style="border:2px solid gray;padding:5px">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="3" align="Center" style="border-bottom: 2px solid gray; padding-bottom:5px ">
+                                            <img id="ctl00_content1_Image1" src="/Images/logo.gif" style="height:111px;width:217px;border-width:0px;">
+                                        </td>
+                                        <td align="left" colspan="3" style="color: Blue;border-bottom: 2px solid gray; padding-bottom: 5px">
+                                            H.O :- Star Bus,Rani Bazar,Bikaner
+                                            <br>
+                                            Ph  :- 9887301585
+                                            <br>
+                                            B.O :- Star Bus, J.N.V.,Bikaner
+                                            <br>
+                                            Ph  :- 9214961605
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Ticket Number
+                                        </td>
+                                        <td class="arial18">
+                                            :
+                                        </td>
+                                        <td class="redText">
+                                            <span>
+                                                <strong>
+                                                    @Model.Passengerinfo.Pnr
+                                                </strong>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            Agent Name
+                                        </td>
+                                        <td class="arial18">
+                                            :
+                                        </td>
+                                        <td>
+                                            <span>
+                                                <strong>
+                                                    @Model.Passengerinfo.AgentId
+                                                </strong>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Name
+                                        </td>
+                                        <td class="arial18">
+                                            :
+                                        </td>
+                                        <td>
+                                            <span>
+                                                <strong>
+                                                    @Model.Passengerinfo.CName
+                                                </strong>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            Phone Number
+                                        </td>
+                                        <td class="arial18">
+                                            :
+                                        </td>
+                                        <td>
+                                            <span>
+                                                <strong>
+                                                    @Model.Passengerinfo.CPhone
+                                                </strong>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Source
+                                        </td>
+                                        <td class="arial18 ">
+                                            :
+                                        </td>
+                                        <td>
+                                            <span><strong>@Model.Passengerinfo.CFrom </strong></span>
+                                        </td>
+                                        <td>
+                                            Destination
+                                        </td>
+                                        <td class="arial18">
+                                            :
+                                        </td>
+                                        <td>
+                                            <span>
+                                                <strong>
+                                                    @Model.Passengerinfo.CTo
+                                                </strong>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Joutney Date
+                                        </td>
+                                        <td class="arial18">
+                                            :
+                                        </td>
+                                        <td>
+                                            <span>
+                                                <strong>
+                                                    @Model.Passengerinfo.CDate.ToShortDateString()
+                                                </strong>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            Journey Time
+                                        </td>
+                                        <td class="arial18">
+                                            :
+                                        </td>
+                                        <td>
+                                            <span>
+                                                <strong>
+                                                    @Model.Passengerinfo.CTime
+                                                </strong>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Seat Numbers
+                                        </td>
+                                        <td class="arial18">
+                                            :
+                                        </td>
+                                        <td>
+                                            <span>
+                                                <strong>
+                                                    @Model.Passengerinfo.Seatnumber
+                                                </strong>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            No.of Passengers
+                                        </td>
+                                        <td class="arial18">
+                                            :
+                                        </td>
+                                        <td>
+                                            <span>
+                                                <strong>
+                                                    @Model.Passengerinfo.Totalseat
+                                                </strong>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Total Rent
+                                        </td>
+                                        <td class="arial18">
+                                            :
+                                        </td>
+                                        <td class="redText">
+                                            <span>
+                                                <strong>
+                                                    @Model.Passengerinfo.Amount
+                                                </strong>
+                                            </span>
+                                        </td>
+                                        <td colspan="3">&nbsp;</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <script>
+        swal({
+            title: "Error!",
+            text: "Something Went Wrong",
+            icon: "error",
+        }).then(function () { window.location.href = "BookTicket" });
+    </script>
+}
