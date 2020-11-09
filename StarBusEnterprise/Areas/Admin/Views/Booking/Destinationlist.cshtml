@@ -1,7 +1,0 @@
-﻿@model StarBusEnterprise.FormViewModel.MAinViewModel
-<option disabled selected>--select--</option>
-@foreach (var item in Model.DestantionTables)
-{
-    <option value="@item.Id" var-cto="@item.DestinationName">@item.DestinationName</option>
-}
-
