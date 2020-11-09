@@ -1,0 +1,58 @@
+﻿
+@model IEnumerable<StarBusEnterprise.Models.DomainWork.AgentBasicInfo>
+@{
+    Layout = null;
+}
+<style>
+    td, th {
+        font-size: 15px;
+        background-color: #A3E4D7;
+    }
+    td {
+        background-color: #D7DBDD;
+    }
+    tr {
+        background-color: #A3E4D7;
+    }
+</style>
+
+
+<div class=" container">
+    <h1 style="text-align:center;padding:10px;">
+        Agents Info
+    </h1>
+    <table class="table col-lg-12 col-md-12">
+        <thead style="background-color: #A3E4D7;">
+            <tr style="background-color: #A3E4D7;">
+
+                <th scope="col">AgentName</th>
+                <th scope="col">AgentFname</th>
+                <th scope="col">AgentShopName</th>
+                <th scope="col">AgentShopAdd</th>
+                <th scope="col">AgentShopCity</th>
+                <th scope="col">AgentPhoneNumber</th>
+                <th scope="col">AgentMobileNumber</th>
+                <th scope="col">AgentCurrentBal</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@item.AgentName</td>
+                    <td>@item.AgentFname</td>
+                    <td>@item.AgentShopName</td>
+                    <td>@item.AgentShopAdd</td>
+                    <td>@item.AgentShopCity</td>
+                    <td>@item.AgentPhoneNumber</td>
+                    <td>@item.AgentMobileNumber</td>
+                    <td>@item.AgentCurrentBal</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

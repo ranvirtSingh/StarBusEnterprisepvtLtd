@@ -1,0 +1,190 @@
+﻿@model StarBusEnterprise.FormViewModel.MAinViewModel
+
+<div class="container">
+    <div class="row">
+        <div class="col col-lg-4">
+            <div id="logo">
+                <img src="/Images/logo.gif">
+            </div>
+        </div>
+        <div class="col col-lg-8">
+            <a class="btn btn-group btn-success text-white" href="/StarBus/Index/">Home</a>
+            <a class="btn btn-group btn-primary text-white" onclick="displayp1()">AgentBasicInfo</a>
+            <a class="btn btn-group btn-success text-white" onclick="displayp2()">AboutUs</a>
+            <a class="btn btn-group btn-success text-white" onclick="displayp3()">FAQ</a>
+            <a class="btn btn-group btn-success text-white" onclick="displayp4()">FeedBack</a>
+            <a class="btn btn-group btn-success text-white" onclick="displayp5()">Contact Us</a>
+            <a class="btn btn-group btn-success text-white" onclick="displayp6()">Search</a>
+            <br />
+            <br />
+        </div>
+    </div>
+    <div class=" row">
+        <div class="col col-lg-12" style="text-align:center;"><img alt="bus" src="/Images/volvo-bus-final.gif"></div>
+    </div>
+    
+
+    <div id="partialv">
+        @*<partial name="Accounts" />*@
+        <div class="container">
+            <div class="row" style="padding:10px;margin-top:20px;">
+                <div class="col col-lg-6">
+
+                    <div class="row">
+                        <hr style="color:black;" />
+                        <div class="col col-lg-12">
+                            <h5> Call for bus tickets and home delivery service</h5>
+                        </div>
+                        <div class="col col-lg-12">
+                            @foreach (var item in Model.HomeDeliveryAddressInfo)
+                            {
+                                <div class="row">
+                                    <div class="col col-lg-4" style="font-size:15px;text-align:center;">  @Html.DisplayFor(modelItem => item.homedeliveryserviceName)</div>
+                                    <div class=" col col-lg-3" style="font-size:15px;text-align:center;">: ( @Html.DisplayFor(modelItem => item.AreaCode) )</div>
+                                    <div class="col col-lg-3" style="font-size:15px;text-align:center;">  @Html.DisplayFor(modelItem => item.homedeliveryserviceContact)</div>
+
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col col-lg-6">
+
+
+                    <div class="row">
+                        <hr style="color:black;" />
+                        <div class="col col-lg-12">
+                            <h5>Starbus Advantage</h5>
+                        </div>
+                        <div class="col col-lg-12">
+                            @foreach (var item in Model.Advantagess)
+                            {
+
+                                <div class="col col-lg-12 border-0">
+                                    @Html.DisplayFor(modelItem => item.AdvantageName)
+                                </div>
+
+                            }
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+<div id="invoiceDiv">
+
+</div>
+    </div>
+<script>
+    function displayp1() {
+
+        $.ajax({
+            url: "/StarBus/AgentBasicInfo/",
+            method: "GET",
+            success: function (result) {
+                $('#partialv').html(result);
+                $('#table1').hide();
+                $('#iline').hide();
+                $('#Index').hide();
+            }
+        });
+    }
+
+    function displayp2() {
+        $.ajax({
+            url: "/StarBus/AboutUs/",
+
+            method: "GET",
+            success: function (result) {
+                $('#partialv').html(result);
+                $('#table1').hide();
+                $('#iline').hide();
+                $('#Index').hide();
+            }
+        });
+    }
+
+    function displayp3() {
+        $.ajax({
+            url: "/StarBus/Faq/",
+
+            method: "GET",
+            success: function (result) {
+                $('#partialv').html(result);
+                $('#table1').hide();
+                $('#iline').hide();
+                $('#Index').hide();
+            }
+        });
+    }
+    function displayp4() {
+        $.ajax({
+            url: "/StarBus/FeedbackForm/",
+
+            method: "GET",
+            success: function (result) {
+                $('#partialv').html(result);
+                $('#table1').hide();
+                $('#iline').hide();
+                $('#Index').hide();
+            }
+        });
+    }
+    function displayp5() {
+        $.ajax({
+            url: "/StarBus/ContactUs/",
+
+            method: "GET",
+            success: function (result) {
+                $('#partialv').html(result);
+                $('#table1').hide();
+                $('#iline').hide();
+                $('#Index').hide();
+            }
+        });
+    }
+    function displayp6() {
+        $.ajax({
+            url: "/Admin/Booking/SearchTicket/",
+
+            method: "GET",
+            success: function (result) {
+                $('#partialv').html(result);
+                $('#table1').hide();
+                $('#iline').hide();
+                $('#Index').hide();
+            }
+        });
+    }
+    function createCategory() {
+       
+        $.ajax(
+            {
+                url: "/StarBus/AgentBasicInfo/",
+                method: "GET",
+
+
+                success: function (result) {
+
+               
+
+                }
+
+
+
+
+            });
+
+
+       
+
+
+    }
+</script>

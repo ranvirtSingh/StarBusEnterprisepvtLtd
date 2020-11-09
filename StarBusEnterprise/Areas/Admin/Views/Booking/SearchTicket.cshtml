@@ -1,0 +1,120 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model StarBusEnterprise.FormViewModel.MAinViewModel
+@{
+    ViewData["Title"] = "SearchTicket";
+}
+
+<div class="d-flex flex-column">
+    <div class="py-3 text-center">
+        <h1 >Search Tickets</h1>
+    </div>
+</div>
+<div class="container p-2">
+    <div class="form-row pr-2">
+        <div class="col text-right pt-3 pr-0">
+            <form >
+                <div class="form-actions">
+                    <p>
+                        <input type="text" id="id" name="id" data-val="true" data-val-required="Please enter PNR." value="">
+                        <a class="btn btn-group btn-success text-white" onclick="Search()">Search</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+    @if (Model.Passengerinfo.Id > 0)
+    {
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-sm text-center">
+                    <h3>Ticket Details</h3>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-sm-4 mb-3 mb-sm-0">
+                    <span class="text-black-50 text-uppercase">From:</span><br>
+                    <span class="tkt-text">@Model.Passengerinfo.CFrom</span>
+                </div>
+                <div class="col-sm-4 mb-3 mb-sm-0">
+                    <span class="text-black-50 text-uppercase">To:</span><br>
+                    <span class="tkt-text">@Model.Passengerinfo.CTo</span>
+                </div>
+                <div class="col-sm-4">
+                    <span class="text-black-50 text-uppercase">Date of Journey: </span><br>
+                    <span class="tkt-text">@Model.Passengerinfo.CDate.ToShortDateString() </span>
+                </div>
+            </div>
+
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-sm-4 mb-3 mb-sm-0">
+                    <span class="text-black-50 text-uppercase">Departure Time:</span><br>
+                    <span class="tkt-text">@Model.Passengerinfo.CTime</span>
+                </div>
+                <div class="col-sm-4 mb-3 mb-sm-0">
+                    <span class="text-black-50 text-uppercase">Status: </span><br>
+                    <span class="tkt-text">@Model.Passengerinfo.Status</span>
+                </div>
+                <div class="col-sm-4">
+                    <span class="text-black-50 text-uppercase">Ticket PNR: </span><br>
+                    <span class="tkt-text">@Model.Passengerinfo.Pnr</span>
+                </div>
+            </div>
+
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-sm-4 mb-3 mb-sm-0">
+                    <span class="text-black-50 text-uppercase">Passenger Name:</span><br>
+                    <span class="tkt-text">@Model.Passengerinfo.CName</span>
+                </div>
+                <div class="col-sm-4 mb-3 mb-sm-0">
+                    <span class="text-black-50 text-uppercase">Seat:</span><br>
+                    <span class="tkt-text">@Model.Passengerinfo.Seatnumber</span>
+                </div>
+                <div class="col-sm-4">
+                    <span class="text-black-50 text-uppercase">Phone Number: </span><br>
+                    <span class="tkt-text">@Model.Passengerinfo.CPhone</span>
+                </div>
+            </div>
+
+            <hr class="my-4">
+            <div class="row">
+
+                <div class="col-sm-4 mb-3 mb-sm-0">
+                    <span class="text-black-50 text-uppercase">Total Seat: </span><br>
+                    <span class="tkt-text">@Model.Passengerinfo.Totalseat</span>
+                </div>
+                <div class="col-sm-4 mb-3 mb-sm-0">
+                    <span class="text-black-50 text-uppercase">Bus Number: </span><br>
+                    <span class="tkt-text">@Model.Passengerinfo.BusNumber</span>
+                </div>
+
+                <div class="col-sm-4 mb-3 mb-sm-0">
+                    <span class="text-black-50 text-uppercase">Agent Name: </span><br>
+                    <span class="tkt-text">@Model.Passengerinfo.AgentId</span>
+                </div>
+                <div class="col-sm-4">
+                </div>
+            </div>
+            <p class="p-3 text-right rounded my-4 bg-light card-sm card-body" style="font-size: 1.24rem; font-weight: 500;">Total Fare: <span class="pl-2">@Model.Passengerinfo.Amount</span> </p>
+        </div>
+
+    }
+</div>
+<script>
+    function Search() {
+        var Id= $('#id').val();
+        $.ajax({
+            url: "/Admin/Booking/SearchTicket/",
+            data: { id:Id },
+            method: "POST",
+            success: function (result) {
+                $('#partialv').html(result);
+                $('#table1').hide();
+                $('#iline').hide();
+                $('#Index').hide();
+            }
+        });
+    }
+</script>

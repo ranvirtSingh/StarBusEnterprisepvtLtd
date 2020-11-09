@@ -1,0 +1,339 @@
+﻿@model StarBusEnterprise.FormViewModel.MAinViewModel
+@{
+    Layout = null;
+    var CFromData = ViewBag.CFromdara;
+    var CTo = ViewBag.CTo;
+    var Date = ViewBag.Date;
+    var RatePerSeat = ViewBag.RatePerSeat;
+    var CTime = ViewBag.CTime;
+}
+
+
+
+
+
+
+
+
+<div class="table-responsive mb-2 d-block">
+    <input type="text" id="Id" name="Id" value="@Model.States.Id" hidden />
+    <table class="table mb-0" id="seattable">
+        <tbody class="text-left">
+            <tr>
+                <td>
+                    <input type="image" name="s1" id="s1" src="/Images/available_seat_img.gif" onclick="select_seat(1)" value="@Model.States.s1">
+                    <br />
+                    1
+                </td>
+                <td>
+                    <input type="image" name="s6" id="s6" src="/Images/available_seat_img.gif" onclick="select_seat(6)" value="@Model.States.s6" />
+                    <br />
+                    6
+                </td>
+                <td>
+                    <input type="image" name="s7" id="s7" src="/Images/available_seat_img.gif" onclick="select_seat(7)" value="@Model.States.s7" />
+                    <br />
+                    7
+                </td>
+                <td>
+                    <input type="image" name="s12" id="s12" src="/Images/available_seat_img.gif" onclick="select_seat(12)" value="@Model.States.s12" />
+                    <br />
+                    12
+                </td>
+                <td>
+                    <input type="image" name="s13" id="s13" src="/Images/available_seat_img.gif" onclick="select_seat(13)" value="@Model.States.s13" />
+                    <br />
+                    13
+                </td>
+                <td>
+                    <input type="image" name="s18" id="s18" src="/Images/available_seat_img.gif" onclick="select_seat(18)" value="@Model.States.s18" />
+                    <br />
+                    18
+                </td>
+                <td>
+                    <input type="image" name="s19" id="s19" src="/Images/available_seat_img.gif" onclick="select_seat(19)" value="@Model.States.s19" />
+                    <br />
+                    19
+                </td>
+                <td>
+                    <input type="image" name="s24" id="s24" src="/Images/available_seat_img.gif" onclick="select_seat(24)" value="@Model.States.s24" />
+                    <br />
+                    24
+                </td>
+                <td>
+                    <input type="image" name="s25" id="s25" src="/Images/available_seat_img.gif" onclick="select_seat(25)" value="@Model.States.s25" />
+                    <br />
+                    25
+                </td>
+                <td>
+                    <input type="image" name="s31" id="s31" src="/Images/available_seat_img.gif" onclick="select_seat(31)" value="@Model.States.s31" />
+                    <br />
+                    31
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="image" name="s2" id="s2" src="/Images/available_seat_img.gif" onclick="select_seat(2)" value="@Model.States.s2" />
+                    <br />
+                    2
+                </td>
+                <td>
+                    <input type="image" name="s5" id="s5" src="~/Images/available_seat_img.gif" onclick="select_seat(5)" value="@Model.States.s5" />
+                    <br />
+                    5
+                </td>
+                <td>
+                    <input type="image" name="s8" id="s8" src="/Images/available_seat_img.gif" onclick="select_seat(8)" value="@Model.States.s8" />
+                    <br />
+                    8
+                </td>
+                <td>
+                    <input type="image" name="s11" id="s11" src="~/Images/available_seat_img.gif" onclick="select_seat(11)" value="@Model.States.s11" />
+                    <br />
+                    11
+                </td>
+                <td>
+                    <input type="image" name="s14" id="s14" src="/Images/available_seat_img.gif" onclick="select_seat(14)" value="@Model.States.s14" />
+                    <br />
+                    14
+                </td>
+                <td>
+                    <input type="image" name="s17" id="s17" src="~/Images/available_seat_img.gif" onclick="select_seat(17)" value="@Model.States.s17" />
+                    <br />
+                    17
+                </td>
+                <td>
+                    <input type="image" name="s20" id="s20" src="/Images/available_seat_img.gif" onclick="select_seat(20)" value="@Model.States.s20" />
+                    <br />
+                    20
+                </td>
+                <td>
+                    <input type="image" name="s23" id="s23" src="~/Images/available_seat_img.gif" onclick="select_seat(23)" value="@Model.States.s23" />
+                    <br />
+                    23
+                </td>
+                <td>
+                    <input type="image" name="s26" id="s26" src="/Images/available_seat_img.gif" onclick="select_seat(26)" value="@Model.States.s26" />
+                    <br />
+                    26
+                </td>
+                <td>
+                    <input type="image" name="s30" id="s30" src="/Images/available_seat_img.gif" onclick="select_seat(30)" value="@Model.States.s30" />
+                    <br />
+                    30
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <input type="image" name="s29" id="s29" src="/Images/available_seat_img.gif" onclick="select_seat(29)" value="@Model.States.s29" />
+                    <br />
+                    29
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="image" name="s3" id="s3" src="/Images/available_seat_img.gif" onclick="select_seat(3)" value="@Model.States.s3" />
+                    <br />
+                    3
+                </td>
+                <td>
+                    <input type="image" name="s4" id="s4" src="/Images/available_seat_img.gif" onclick="select_seat(4)" value="@Model.States.s4" />
+                    <br />
+                    4
+                </td>
+                <td>
+                    <input type="image" name="s9" id="s9" src="/Images/available_seat_img.gif" onclick="select_seat(9)" value="@Model.States.s9" />
+                    <br />
+                    9
+                </td>
+                <td>
+                    <input type="image" name="s10" id="s10" src="/Images/available_seat_img.gif" onclick="select_seat(10)" value="@Model.States.s10" />
+                    <br />
+                    10
+                </td>
+                <td>
+                    <input type="image" name="s15" id="s15" src="/Images/available_seat_img.gif" onclick="select_seat(15)" value="@Model.States.s15" />
+                    <br />
+                    15
+                </td>
+                <td>
+                    <input type="image" name="s16" id="s16" src="/Images/available_seat_img.gif" onclick="select_seat(16)" value="@Model.States.s16" />
+                    <br />
+                    16
+                </td>
+                <td>
+                    <input type="image" name="s21" id="s21" src="/Images/available_seat_img.gif" onclick="select_seat(21)" value="@Model.States.s21" />
+                    <br />
+                    21
+                </td>
+                <td>
+                    <input type="image" name="s22" id="s22" src="/Images/available_seat_img.gif" onclick="select_seat(22)" value="@Model.States.s22" />
+                    <br />
+                    22
+                </td>
+                <td>
+                    <input type="image" name="s27" id="s27" src="/Images/available_seat_img.gif" onclick="select_seat(27)" value="@Model.States.s27" />
+                    <br />
+                    27
+                </td>
+                <td>
+                    <input type="image" name="s28" id="s28" src="/Images/available_seat_img.gif" onclick="select_seat(28)" value="@Model.States.s28" />
+                    <br />
+                    28
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>
+<div class="text-right float-right pt-2">
+    <img src="/Images/booked_seat_img.gif">Booked
+    <img src="/Images/available_seat_img.gif">Available
+</div>
+<div class="col col-lg-12">
+    <div class="form-group">
+
+        <a class="btn btn-success btn-group" onclick="saveSpecification()"><i class="fas fa-arrow-right"></i></a>
+
+    </div>
+</div>
+
+
+@*JAVASCRIPT AND JQUERY*@
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js" integrity="sha512-eYSzo+20ajZMRsjxB6L7eyqo5kuXuS2+wEbbOkpaur+sA2shQameiJiWEzCIDwJqaB0a4a6tCuEvCOBHUg3Skg==" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function () {
+        //$("#seattable tbody").on('click', 'tr', function () {
+        //    var rowData = $(this).children("td").map(function () {
+        //        return $(this).text();
+        //    }).get();
+        //    dataid = rowData[0];
+        //});
+
+        //$('#seattable td').click(function (e) {
+        //    $(this).find('img').toggle();
+        //    //$(this).attr("src", "/Images/selected_seat_img.gif").;
+        //});
+    });
+
+    //FOR ADD VALUE TO THE BUS SEAT AND CHANGE COLOR OF THE SEAT ON SELECTION
+    function select_seat(data) {
+        var seatImg = $('#s' + data).attr("src");
+        var seatNo = $('#Seatnumber').val().trim();
+        if (seatImg != "/Images/available_seat_img.gif") {
+            $('#s' + data).val(null);
+            $('#s' + data).attr("src", "/Images/available_seat_img.gif");
+            if (seatNo.indexOf("s" + data + ",") > -1) {
+                seatNo = seatNo.replace("s" + data + ",", "");
+            }
+            else {
+                seatNo = seatNo.replace("s" + data, "");
+                if (seatNo.endsWith(",")) {
+                    seatNo = seatNo.slice(0, -1);
+                }
+            }
+            $('#Seatnumber').val(seatNo);
+        }
+        else {
+            $('#s' + data).attr("src", "/Images/selected_seat_img.gif");
+            $('#s' + data).val("b");
+            if (seatNo.length == 0) {
+                $('#Seatnumber').val("s" + data);
+            }
+            else if (seatNo.endsWith(",")) {
+                $('#Seatnumber').val(seatNo + "s" + data);
+            }
+            else {
+                $('#Seatnumber').val(seatNo + "," + "s" + data);
+            }
+        }
+    }
+
+    function saveSpecification() {
+        var formData1 = $("#ticketbookingForm").serialize();
+        saveBusState();
+        $.ajax({
+            url: "/Admin/Booking/CustomerInfo/",
+            method: "POST",
+            data: formData1,
+            success: function (result) {
+                $('#cConfirmation').html(result);
+                $('#busseats').hide();
+
+            }
+        });
+    }
+    //POST METHOD FOR SAVE BUS STATE
+    function saveBusState() {
+        var CTo = $("option:selected", $("#CTo")).attr("var-cto");
+        var modeldata = {
+            Id: $('#Id').val(),
+            Date: $('#CDate').val(),
+            Time: $('#CTime').val(),
+            Station: CTo,
+            S1: $('#s1').val(),
+            S2: $('#s2').val(),
+            S3: $('#s3').val(),
+            S4: $('#s4').val(),
+            S5: $('#s5').val(),
+            S6: $('#s6').val(),
+            S7: $('#s7').val(),
+            S8: $('#s8').val(),
+            S9: $('#s9').val(),
+            S10: $('#s10').val(),
+            S11: $('#s11').val(),
+            S12: $('#s12').val(),
+            S13: $('#s13').val(),
+            S14: $('#s14').val(),
+            S15: $('#s15').val(),
+            S16: $('#s16').val(),
+            S17: $('#s17').val(),
+            S18: $('#s18').val(),
+            S19: $('#s19').val(),
+            S20: $('#s20').val(),
+            S21: $('#s21').val(),
+            S22: $('#s22').val(),
+            S23: $('#s23').val(),
+            S24: $('#s24').val(),
+            S25: $('#s25').val(),
+            S26: $('#s26').val(),
+            S27: $('#s27').val(),
+            S28: $('#s28').val(),
+            S29: $('#s29').val(),
+            S30: $('#s30').val(),
+            S31: $('#s31').val()
+        };
+
+        $.ajax({
+            url: "/Admin/Booking/saveState/",
+            dataType: 'json',
+            method: "POST",
+            data: { data : modeldata },
+            success: function (result) {
+            }
+        });
+
+    }
+</script>

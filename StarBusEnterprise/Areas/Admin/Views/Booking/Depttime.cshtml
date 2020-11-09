@@ -1,0 +1,19 @@
+﻿@model StarBusEnterprise.FormViewModel.MAinViewModel
+<option disabled selected>--select--</option>
+@if (Model.TimeList != null)
+{
+    foreach (var item in Model.TimeList)
+    {
+        <option value="@item.Time" var-id="@item.Id">@item.Time</option>
+    }
+}
+
+@*JAVASCRIPT AND JQUERY*@
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js" integrity="sha512-eYSzo+20ajZMRsjxB6L7eyqo5kuXuS2+wEbbOkpaur+sA2shQameiJiWEzCIDwJqaB0a4a6tCuEvCOBHUg3Skg==" crossorigin="anonymous"></script>
+
+<script>
+    $('#RatePerSeat').val("@ViewBag.rent");
+</script>
+
