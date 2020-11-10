@@ -1,20 +1,28 @@
 ﻿@model StarBusEnterprise.FormViewModel.MAinViewModel
+<style>
+    a{
+        text-decoration:none;
+        padding:5px;
+    }
 
+    a:hover{
+        text-decoration:none;
+        padding:5px;
+        background-color:lightblue;
+    }
+</style>
 <div class="container">
     <div class="row">
-        <div class="col col-lg-4">
-            <div id="logo">
-                <img src="/Images/logo.gif">
-            </div>
-        </div>
-        <div class="col col-lg-8">
-            <a class="btn btn-group btn-success text-white" href="/StarBus/Index/">Home</a>
-            <a class="btn btn-group btn-primary text-white" onclick="displayp1()">AgentBasicInfo</a>
-            <a class="btn btn-group btn-success text-white" onclick="displayp2()">AboutUs</a>
-            <a class="btn btn-group btn-success text-white" onclick="displayp3()">FAQ</a>
-            <a class="btn btn-group btn-success text-white" onclick="displayp4()">FeedBack</a>
-            <a class="btn btn-group btn-success text-white" onclick="displayp5()">Contact Us</a>
-            <a class="btn btn-group btn-success text-white" onclick="displayp6()">Search</a>
+       
+        <div class="col text-center col-lg-12">
+            <a class="" href="/StarBus/Index/"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            <a class="" onclick="displayp1()"><i class="fas fa-user-secret"></i> Agent</a>
+            <a class="" onclick="displayp2()"><i class="fas fa-info"></i> About</a>
+            <a class="" onclick="displayp3()"><i class="fa fa-question-circle" aria-hidden="true"></i> FAQ</a>
+            <a class="" onclick="displayp4()"><i class="fas fa-comments"></i> FeedBack</a>
+            <a class="" onclick="displayp5()"><i class="fas fa-id-card-alt"></i> Contact Us</a>
+            <a class="" onclick="displayp6()"><i class="fa fa-search" aria-hidden="true"></i> Search</a>
+            <a class="" onclick="displayp7()"><i class="fas fa-ticket-alt"></i> Book</a>
             <br />
             <br />
         </div>
@@ -153,6 +161,19 @@
     function displayp6() {
         $.ajax({
             url: "/Admin/Booking/SearchTicket/",
+
+            method: "GET",
+            success: function (result) {
+                $('#partialv').html(result);
+                $('#table1').hide();
+                $('#iline').hide();
+                $('#Index').hide();
+            }
+        });
+    }
+    function displayp7() {
+        $.ajax({
+            url: "/StarBus/BookTicketUser/",
 
             method: "GET",
             success: function (result) {

@@ -165,8 +165,16 @@ namespace StarBusEnterprise.Areas.Admin.Controllers
             var startDestination = destinationservice.GetAll().Where(x => x.Id == Convert.ToInt32(passengerinfo.CTo)).FirstOrDefault();
             passengerinfo.CTo = startDestination.DestinationName;
             passengerinfo.CFrom = startFrom.StartPoint;
-          
-            passengerinfo.AgentId = User.FindFirst(ClaimTypes.Name).Value;
+
+            if (signInMAnager.IsSignedIn(User))
+            {
+                passengerinfo.AgentId = User.FindFirst(ClaimTypes.Name).Value;
+
+            }
+            else
+            {
+                passengerinfo.AgentId = "User";
+            }
             try
             {
                 if (ModelState.IsValid)

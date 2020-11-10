@@ -17,6 +17,9 @@ namespace StarBusEnterprise.Controllers
         private readonly IRepository<CustomerCareTable> serviceCustomerCareTable;
         private readonly IRepository<AddrerssTAble> serviceAddrerssTAble;
         private readonly IRepository<TermsAndConditionsDbset> serviceTermsAndConditionsDbse;
+        private readonly IRepository<StartFromTable> serviceStartFromTable;
+        private readonly IRepository<DestantionTable> destinationservice;
+
         public StarBusController(
             IRepository<AgentBasicInfo> serviceAgentBasicInfo,
             IRepository<Feedback> serviceFeedback, 
@@ -25,7 +28,9 @@ namespace StarBusEnterprise.Controllers
             IRepository<HomeDeliveryAddressInfo> serviceHomeDelivery,
             IRepository<CustomerCareTable> serviceCustomerCareTable, 
             IRepository<AddrerssTAble> serviceAddrerssTAble ,
-        IRepository<TermsAndConditionsDbset> serviceTermsAndConditionsDbse)
+        IRepository<TermsAndConditionsDbset> serviceTermsAndConditionsDbse,
+          IRepository<StartFromTable> serviceStartFromTable,
+            IRepository<DestantionTable> _destinationservice)
         {
             this.serviceAgentBasicInfo = serviceAgentBasicInfo;
             this.serviceFeedback = serviceFeedback;
@@ -35,8 +40,9 @@ namespace StarBusEnterprise.Controllers
             this.serviceCustomerCareTable = serviceCustomerCareTable;
             this.serviceAddrerssTAble = serviceAddrerssTAble;
             this.serviceTermsAndConditionsDbse=serviceTermsAndConditionsDbse;
-
-    }
+            this.serviceStartFromTable = serviceStartFromTable;
+            destinationservice = _destinationservice;
+        }
 
 
         public IActionResult Index()
@@ -103,6 +109,16 @@ namespace StarBusEnterprise.Controllers
         public IActionResult TermsAndCondition()
         {
             return View(serviceTermsAndConditionsDbse.GetAll());
+        }
+
+        public IActionResult BookTicketUser()
+        {
+            MAinViewModel model = new MAinViewModel();
+
+            model.StartFromTables = serviceStartFromTable.GetAll().ToList();
+
+            model.DestantionTables = destinationservice.GetAll().ToList();
+            return View(model);
         }
         
     }
