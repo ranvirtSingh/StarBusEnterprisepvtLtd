@@ -11,15 +11,15 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <li class="nav-item">
-            <a class="btn text-dark" href="/Admin/Home/Index">Admin </a>
+            <a class="btn text-dark" href="/Admin/Home/Index"><i class="fas fa-user"></i> </a>
         </li>
         <li class="nav-item">
-            <p style="padding:7px;">Hello @User.Identity.Name!</p>
+            <p style="padding:7px;">Hi! @User.Identity.Name!</p>
         </li>
         <li class="nav-item">
 
 
-            <a class="btn btn-success " onclick="Logout()">Logout</a>
+            <a class="btn btn-light " onclick="Logout()">Logout</a>
 
             @*<form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                     <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
@@ -29,10 +29,10 @@
     else
     {
         <li class="nav-item">
-            <a class="btn btn-success" onclick="Register()"> Register</a>
+            <a class="btn btn-light" onclick="Register()"> Register</a>
         </li>
         <li class="nav-item">
-            <a class="btn btn-success" onclick="login()"> Login</a>
+            <a class="btn btn-light" onclick="login()"> Login</a>
         </li>
     }
 </ul>

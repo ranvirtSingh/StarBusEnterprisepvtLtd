@@ -15,7 +15,7 @@
 <body>
   
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-2">
             <div class="container">
                 <a class="navbar-brand text-center" asp-area="" asp-controller="StarBus" asp-action="Index">   <img  src="/Images/logo.gif" alt="StarBus Logo" width="100"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -25,13 +25,41 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
-                        @*<li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+
+
+
+
+
+
+
+                     
+                     
+
+                        <li class="nav-item">
+                            <a class="btn btn-light" href="/StarBus/Index/"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>*@
-                       
+                            <a class="btn btn-light" onclick="displayp1()"><i class="fas fa-user-secret"></i> Agent</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-light" onclick="displayp2()"><i class="fas fa-info"></i> About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-light" onclick="displayp3()"><i class="fa fa-question-circle" aria-hidden="true"></i> FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-light" onclick="displayp4()"><i class="fas fa-comments"></i> FeedBack</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-light" onclick="displayp5()"><i class="fas fa-id-card-alt"></i> Contact Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-light" onclick="displayp6()"><i class="fa fa-search" aria-hidden="true"></i> Search</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-light" onclick="displayp7()"><i class="fas fa-ticket-alt"></i> Book</a>
+                        </li>
+
                     </ul>
                 </div>
             </div>
