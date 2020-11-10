@@ -1,11 +1,12 @@
 ﻿@model StarBusEnterprise.FormViewModel.MAinViewModel
+@{ var NeedToLogin= ViewBag.NeedToLogin;}
 <style>
-    a{
+    .Homea{
         text-decoration:none;
         padding:5px;
     }
 
-    a:hover{
+    .Homea:hover{
         text-decoration:none;
         padding:5px;
         background-color:lightblue;
@@ -13,16 +14,19 @@
 </style>
 <div class="container">
     <div class="row">
-       
+       <div class="col col-lg-12">
+           <p>@NeedToLogin</p>
+
+       </div>
         <div class="col text-center col-lg-12">
-            <a class="" href="/StarBus/Index/"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
-            <a class="" onclick="displayp1()"><i class="fas fa-user-secret"></i> Agent</a>
-            <a class="" onclick="displayp2()"><i class="fas fa-info"></i> About</a>
-            <a class="" onclick="displayp3()"><i class="fa fa-question-circle" aria-hidden="true"></i> FAQ</a>
-            <a class="" onclick="displayp4()"><i class="fas fa-comments"></i> FeedBack</a>
-            <a class="" onclick="displayp5()"><i class="fas fa-id-card-alt"></i> Contact Us</a>
-            <a class="" onclick="displayp6()"><i class="fa fa-search" aria-hidden="true"></i> Search</a>
-            <a class="" onclick="displayp7()"><i class="fas fa-ticket-alt"></i> Book</a>
+            <a class="Homea" href="/StarBus/Index/"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            <a class="Homea" onclick="displayp1()"><i class="fas fa-user-secret"></i> Agent</a>
+            <a class="Homea" onclick="displayp2()"><i class="fas fa-info"></i> About</a>
+            <a class="Homea" onclick="displayp3()"><i class="fa fa-question-circle" aria-hidden="true"></i> FAQ</a>
+            <a class="Homea" onclick="displayp4()"><i class="fas fa-comments"></i> FeedBack</a>
+            <a class="Homea" onclick="displayp5()"><i class="fas fa-id-card-alt"></i> Contact Us</a>
+            <a class="Homea" onclick="displayp6()"><i class="fa fa-search" aria-hidden="true"></i> Search</a>
+            <a class="Homea" onclick="displayp7()"><i class="fas fa-ticket-alt"></i> Book</a>
             <br />
             <br />
         </div>

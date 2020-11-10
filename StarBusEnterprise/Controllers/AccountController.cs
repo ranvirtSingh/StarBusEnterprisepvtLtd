@@ -62,7 +62,7 @@ namespace StarBusEnterprise.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = model.Email, Email = model.Email  };
+                var user = new IdentityUser { UserName = model.UserName, Email = model.Email  };
                 var result = await userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
