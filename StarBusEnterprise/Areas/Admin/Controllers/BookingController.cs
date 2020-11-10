@@ -174,7 +174,7 @@ namespace StarBusEnterprise.Areas.Admin.Controllers
             else
             {
                 ViewBag.NeedToLogin = "User need To Registe/Login";
-                return Json("ogin");
+                return Json("Login");
             }
             try
             {
